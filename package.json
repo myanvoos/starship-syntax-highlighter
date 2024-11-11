@@ -1,0 +1,25 @@
+{
+  "name": "starship-syntax-highlighter",
+  "displayName": "starship-syntax-highlighter",
+  "description": "A syntax highlighter for Starship, a lightweight JSX-based frontend framework",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "starship",
+      "aliases": ["Starship", "starship"],
+      "extensions": [".uss"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "starship",
+      "scopeName": "source.uss",
+      "path": "./syntaxes/starship.tmLanguage.json"
+    }]
+  }
+}
