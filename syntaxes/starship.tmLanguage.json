@@ -1,32 +1,57 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Starship",
+	"scopeName": "source.uss",
+	"fileTypes": ["uss"],
 	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
+	  {
+		"include": "#jsx"
+	  },
+	  {
+		"begin": "<script>",
+		"end": "</script>",
+		"name": "source.ts",
+		"patterns": [
+		  { "include": "source.ts" }
+		]
+	  },
+	  {
+		"begin": "<style>",
+		"end": "</style>",
+		"name": "source.css",
+		"patterns": [
+		  { "include": "source.css" }
+		]
+	  }
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.starship",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.starship",
+	  "jsx": {
+		"patterns": [
+		  {
+			"name": "entity.name.tag.jsx",
+			"match": "</?[a-zA-Z][a-zA-Z0-9]*"
+		  },
+		  {
+			"name": "entity.other.attribute-name.jsx",
+			"match": "\\b(\\.?\\w+|\\#\\w+)\\b(?=\\s*=)"
+		  },
+		  {
+			"name": "punctuation.definition.tag.jsx",
+			"match": "/?>"
+		  },
+		  {
+			"name": "string.quoted.double.jsx",
 			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.starship",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "source.uss"
-}
+			"end": "\""
+		  },
+		  {
+			"name": "variable.other.readwrite.jsx",
+			"match": "\\{\\s*[^}]+\\s*\\}"
+		  },
+		  {
+			"name": "entity.name.function.jsx",
+			"match": "\\b(on:\\w+fe)\\b"
+		  }
+		]
+	  }
+	}
+  }
+  
