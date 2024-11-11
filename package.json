@@ -16,10 +16,12 @@
       "extensions": [".uss"],
       "configuration": "./language-configuration.json"
     }],
-    "grammars": [{
-      "language": "starship",
-      "scopeName": "source.uss",
-      "path": "./syntaxes/starship.tmLanguage.json"
-    }]
+    "grammars": [
+      {
+        "language": "starship",
+        "scopeName": "source.uss",
+        "path": "./syntaxes/starship.tmLanguage.json"
+      }
+    ]
   }
 }

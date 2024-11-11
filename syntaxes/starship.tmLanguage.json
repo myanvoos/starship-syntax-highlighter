@@ -1,57 +1,162 @@
 {
-	"scopeName": "source.uss",
 	"fileTypes": ["uss"],
+	"name": "Starship",
 	"patterns": [
 	  {
-		"include": "#jsx"
-	  },
-	  {
 		"begin": "<script>",
+		"beginCaptures": {
+		  "0": {
+			"name": "entity.name.tag.script.starship"
+		  }
+		},
 		"end": "</script>",
-		"name": "source.ts",
+		"endCaptures": {
+		  "0": {
+			"name": "entity.name.tag.script.starship"
+		  }
+		},
+		"name": "source.ts.embedded.starship",
 		"patterns": [
-		  { "include": "source.ts" }
+		  {
+			"include": "source.ts"
+		  }
 		]
 	  },
 	  {
 		"begin": "<style>",
+		"beginCaptures": {
+		  "0": {
+			"name": "entity.name.tag.style.starship"
+		  }
+		},
 		"end": "</style>",
-		"name": "source.css",
+		"endCaptures": {
+		  "0": {
+			"name": "entity.name.tag.style.starship"
+		  }
+		},
+		"name": "source.css.embedded.starship",
 		"patterns": [
-		  { "include": "source.css" }
+		  {
+			"include": "source.css"
+		  }
 		]
+	  },
+	  {
+		"include": "#jsx"
 	  }
 	],
 	"repository": {
 	  "jsx": {
 		"patterns": [
 		  {
-			"name": "entity.name.tag.jsx",
-			"match": "</?[a-zA-Z][a-zA-Z0-9]*"
+			"name": "meta.tag.starship",
+			"begin": "(</?)([a-zA-Z][a-zA-Z0-9]*)",
+			"beginCaptures": {
+			  "1": {
+				"name": "punctuation.definition.tag.begin.starship"
+			  },
+			  "2": {
+				"name": "entity.name.tag.starship"
+			  }
+			},
+			"end": "(/?>)",
+			"endCaptures": {
+			  "1": {
+				"name": "punctuation.definition.tag.end.starship"
+			  }
+			},
+			"patterns": [
+			  {
+				"include": "#attributes"
+			  },
+			  {
+				"include": "#expressions"
+			  }
+			]
 		  },
 		  {
-			"name": "entity.other.attribute-name.jsx",
-			"match": "\\b(\\.?\\w+|\\#\\w+)\\b(?=\\s*=)"
+			"name": "meta.text.starship",
+			"match": "[^<>\\n]+"
 		  },
 		  {
-			"name": "punctuation.definition.tag.jsx",
-			"match": "/?>"
+			"include": "#expressions"
+		  }
+		]
+	  },
+	  "attributes": {
+		"patterns": [
+		  {
+			"name": "entity.other.attribute-name.id.starship",
+			"match": "\\s+(#[a-zA-Z_][\\w-]*)"
 		  },
 		  {
-			"name": "string.quoted.double.jsx",
+			"name": "entity.other.attribute-name.class.starship",
+			"match": "\\s+(\\.[a-zA-Z_][\\w-]*)"
+		  },
+		  {
+			"name": "entity.other.attribute-name.starship",
+			"match": "\\s+([a-zA-Z_][\\w-]*)(?=\\s*=)"
+		  },
+		  {
+			"name": "keyword.operator.assignment.starship",
+			"match": "="
+		  },
+		  {
+			"name": "keyword.other.attribute-name.on-event.starship",
+			"match": "on:"
+		  },
+		  {
+			"name": "string.quoted.double.starship",
 			"begin": "\"",
-			"end": "\""
+			"end": "\"",
+			"patterns": [
+			  {
+				"include": "#expressions"
+			  }
+			]
 		  },
 		  {
-			"name": "variable.other.readwrite.jsx",
-			"match": "\\{\\s*[^}]+\\s*\\}"
+			"name": "string.quoted.single.starship",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+			  {
+				"include": "#expressions"
+			  }
+			]
 		  },
 		  {
-			"name": "entity.name.function.jsx",
-			"match": "\\b(on:\\w+fe)\\b"
+			"name": "variable.language.attribute.starship",
+			"match": "\\{[^}]+\\}"
+		  }
+		]
+	  },
+	  "expressions": {
+		"patterns": [
+		  {
+			"name": "meta.embedded.expression.starship",
+			"begin": "\\{",
+			"end": "\\}",
+			"beginCaptures": {
+			  "0": {
+				"name": "punctuation.section.embedded.begin.starship"
+			  }
+			},
+			"endCaptures": {
+			  "0": {
+				"name": "punctuation.section.embedded.end.starship"
+			  }
+			},
+			"patterns": [
+			  {
+				"include": "source.ts"
+			  }
+			]
 		  }
 		]
 	  }
-	}
+	},
+	"scopeName": "source.uss"
   }
   
