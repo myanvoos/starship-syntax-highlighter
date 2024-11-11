@@ -9,22 +9,26 @@
   "categories": [
     "Programming Languages"
   ],
+  "repository": "https://github.com/myanvoos/starship-syntax-highlighter.git",
   "contributes": {
-    "languages": [{
-      "id": "starship",
-      "aliases": ["Starship", "starship"],
-      "extensions": [".uss"],
-      "configuration": "./language-configuration.json"
-    }],
+    "languages": [
+      {
+        "id": "starship",
+        "aliases": [
+          "Starship",
+          "starship"
+        ],
+        "extensions": [
+          ".uss"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
     "grammars": [
       {
         "language": "starship",
         "scopeName": "source.uss",
-        "path": "./syntaxes/starship.tmLanguage.json",
-        "embeddedLanguages": {
-          "source.tsx": "jsx",
-          "source.css": "css"
-        }
+        "path": "./syntaxes/starship.tmLanguage.json"
       }
     ]
   }
