@@ -20,7 +20,11 @@
       {
         "language": "starship",
         "scopeName": "source.uss",
-        "path": "./syntaxes/starship.tmLanguage.json"
+        "path": "./syntaxes/starship.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.tsx": "jsx",
+          "source.css": "css"
+        }
       }
     ]
   }

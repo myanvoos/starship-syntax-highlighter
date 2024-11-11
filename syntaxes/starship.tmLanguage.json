@@ -18,7 +18,7 @@
 		"name": "source.ts.embedded.starship",
 		"patterns": [
 		  {
-			"include": "source.ts"
+			"include": "source.tsx"
 		  }
 		]
 	  },
@@ -103,9 +103,34 @@
 			"match": "="
 		  },
 		  {
-			"name": "keyword.other.attribute-name.on-event.starship",
-			"match": "on:"
+			"name": "keyword.operator.event.starship",
+			"match": "\\bon:\\b"
 		  },
+		  {
+			"name": "entity.name.event-handler.starship",
+			"match": "\\bon:\\w+\\b",
+			"captures": {
+			  "1": {
+				"name": "keyword.operator.event.starship"
+			  },
+			  "2": {
+				"name": "entity.name.event-handler.starship"
+			  }
+			},
+			"begin": "\\bon:",
+			"beginCaptures": {
+			  "0": {
+				"name": "keyword.operator.event.starship"
+			  }
+			},
+			"end": "(\\s*=)",
+			"patterns": [
+			  {
+				"name": "entity.name.event-handler.starship",
+				"match": "\\w+"
+			  }
+			]
+		  },		  
 		  {
 			"name": "string.quoted.double.starship",
 			"begin": "\"",
@@ -134,28 +159,28 @@
 	  },
 	  "expressions": {
 		"patterns": [
-		  {
-			"name": "meta.embedded.expression.starship",
-			"begin": "\\{",
-			"end": "\\}",
-			"beginCaptures": {
-			  "0": {
-				"name": "punctuation.section.embedded.begin.starship"
-			  }
-			},
-			"endCaptures": {
-			  "0": {
-				"name": "punctuation.section.embedded.end.starship"
-			  }
-			},
-			"patterns": [
-			  {
-				"include": "source.ts"
-			  }
-			]
-		  }
-		]
-	  }
+			{
+				"name": "meta.embedded.expression.starship",
+				"begin": "\\{",
+				"end": "\\}",
+				"beginCaptures": {
+					"0": { "name": "punctuation.section.embedded.begin.starship" }
+				},
+				"endCaptures": {
+					"0": { "name": "punctuation.section.embedded.end.starship" }
+				},
+				"patterns": [
+					{
+					"name": "variable.other.readwrite.starship",
+					"match": "\\b([a-zA-Z_][\\w]*)\\b"
+					},
+					{
+					"include": "source.tsx"
+					}
+				]
+			}
+		]}	
+
 	},
 	"scopeName": "source.uss"
   }
